@@ -1,0 +1,51 @@
+function loadQuestions() {
+        const category = categorySelect.value;
+        questionsDiv.innerHTML = '';
+        if (category && knowledgeBase[category]) {
+            knowledgeBase[category].forEach(q => {
+                questionsDiv.innerHTML += `
+                    <div>
+                        <p>${q.question}</p>
+                        <input type="radio" name="${q.id}" value="yes"> Ya
+                        <input type="radio" name="${q.id}" value="no"> Tidak
+                    </div>
+                `;
+            });
+        }
+    }
+
+    function processAnswers(e) {
+        e.preventDefault();
+        const category = categorySelect.value;
+        let diagnosis = '';
+        let answeredQuestions = 0;
+
+        knowledgeBase[category].forEach(q => {
+            const answer = document.querySelector(input[name="${q.id}"]:checked);
+            if (answer) {
+                answeredQuestions++;
+                if (answer.value === 'yes') {
+                    diagnosis = solutions[category][${q.id}-yes]  solutions[category]['default'];
+                }
+            }
+        });
+
+        if (answeredQuestions === 0) {
+            alert('Harap jawab setidaknya satu pertanyaan.');
+            return;
+        }
+
+        displayResult(diagnosis  solutions[category]['default']);
+    }
+
+    function displayResult(result) {
+        diagnosisResult.textContent = 'Berdasarkan jawaban Anda, berikut adalah diagnosis dan saran:';
+        solutionDiv.textContent = result;
+        resultSection.style.display = 'block';
+    }
+});
+</script>
+      
+    </script>
+</body>
+</html>
